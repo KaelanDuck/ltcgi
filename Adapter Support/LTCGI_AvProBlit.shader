@@ -65,9 +65,7 @@
             {
                 float2 mainTexUv = i.globalTexcoord.xy;
                 float2 overlayTexUv = i.globalTexcoord.xy;
-                #ifdef UNITY_UV_STARTS_AT_TOP
-                _FlipUV = !_FlipUV;
-                #endif
+                
                 if (_FlipUV) {
                     mainTexUv.y = 1 - mainTexUv.y;
                     overlayTexUv.y = 1 - overlayTexUv.y;

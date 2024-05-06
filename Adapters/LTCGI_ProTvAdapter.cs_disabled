@@ -41,7 +41,7 @@ public class LTCGI_ProTvAdapter : UdonSharpBehaviour
         SharedMaterial.SetTexture(MATERIAL_PARAM_OVERLAY_TEX, AvProBranding);
         SharedMaterial.SetFloat(MATERIAL_PARAM_OVERLAY_OPACITY, 1.0f);
         SharedMaterial.SetFloat(MATERIAL_PARAM_GAMMA, 0.0f);
-        SharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 1.0f);
+        SharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 0.0f);
     }
 
     private void changeRenderTexture(VideoManagerV2 manager)
@@ -59,14 +59,14 @@ public class LTCGI_ProTvAdapter : UdonSharpBehaviour
                     SharedMaterial.SetTexture(MATERIAL_PARAM_OVERLAY_TEX, tex);
                     SharedMaterial.SetFloat(MATERIAL_PARAM_OVERLAY_OPACITY, 1.0f);
                     SharedMaterial.SetFloat(MATERIAL_PARAM_GAMMA, 0.0f);
-                    SharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 1.0f);
+                    SharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 0.0f);
                 }
                 else
                 {
                     AdapterScreensValue[i].SetActive(true);
                     SharedMaterial.SetFloat(MATERIAL_PARAM_OVERLAY_OPACITY, 0.0f);
                     SharedMaterial.SetFloat(MATERIAL_PARAM_GAMMA, 1.0f);
-                    SharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 0.0f);
+                    SharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 1.0f);
                 }
                 Debug.Log("[LTCGI_ProTvAdapter] switched to " + AdapterScreensKey[i].name + " (unity: " + unity + ")");
             }

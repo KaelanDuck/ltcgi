@@ -39,7 +39,7 @@ public class LTCGI_USharpVideoAdapter : UdonSharpBehaviour
         {
             Debug.Log("[LTCGI_USharpVideoAdapter] set to standby texture");
             sharedMaterial.SetTexture(MATERIAL_PARAM_TEX, StandbyTexture);
-            sharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 1.0f);
+            sharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 0.0f);
             sharedMaterial.SetFloat(MATERIAL_PARAM_GAMMA, 0.0f);
         }
         else
@@ -48,13 +48,13 @@ public class LTCGI_USharpVideoAdapter : UdonSharpBehaviour
             if (unity)
             {
                 Debug.Log("[LTCGI_USharpVideoAdapter] set to unity player");
-                sharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 1.0f);
+                sharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 0.0f);
                 sharedMaterial.SetFloat(MATERIAL_PARAM_GAMMA, 0.0f);
             }
             else
             {
                 Debug.Log("[LTCGI_USharpVideoAdapter] set to avpro player");
-                sharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 0.0f);
+                sharedMaterial.SetFloat(MATERIAL_PARAM_FLIPUV, 1.0f);
                 sharedMaterial.SetFloat(MATERIAL_PARAM_GAMMA, 1.0f);
             }
         }
