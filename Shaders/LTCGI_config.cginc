@@ -48,6 +48,9 @@
 /// Disables baking static screen data to a texture
 #define LTCGI_NO_STATIC_UNIFORMS
 
+/// Disable AudioLink support, regardless of whether it's available.
+#define LTCGI_NO_AUDIOLINK
+
 // disabled editor from here on out
 ///
 
@@ -65,8 +68,10 @@
 static float LUT_SCALE = (LUT_SIZE - 1.0)/LUT_SIZE;
 const float LUT_BIAS = 0.5/LUT_SIZE;
 
+#ifndef LTCGI_NO_AUDIOLINK
 // will be set automatically if audiolink is available
 //#define LTCGI_AUDIOLINK
+#endif
 
 #ifdef LTCGI_AUDIOLINK
 #ifndef AUDIOLINK_WIDTH
