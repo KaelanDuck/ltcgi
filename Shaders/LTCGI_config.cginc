@@ -51,13 +51,11 @@
 /// Disable AudioLink support, regardless of whether it's available.
 #define LTCGI_NO_AUDIOLINK
 
+/// Allow statically textured lights.
+#define LTCGI_STATIC_TEXTURES
+
 // disabled editor from here on out
 ///
-
-
-// Allow statically textured lights.
-// (deprecated: doesn't really cause any improvement when disabled...)
-#define LTCGI_STATIC_TEXTURES
 
 
 // keep in sync with LTCGI_Controller.cs
