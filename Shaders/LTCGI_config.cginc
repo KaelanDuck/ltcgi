@@ -45,6 +45,8 @@
 /// Distance at which diffuse from screens will be ignored.
 #define LTCGI_DISTANCE_FADE_APPROX_MULT 50
 
+/// Disables baking static screen data to a texture
+#define LTCGI_NO_STATIC_UNIFORMS
 
 // disabled editor from here on out
 ///
@@ -76,7 +78,9 @@ const float LUT_BIAS = 0.5/LUT_SIZE;
 #endif
 
 // Bake screen data into texture for better performance. Disables moveable screens.
+#ifndef LTCGI_NO_STATIC_UNIFORMS
 #define LTCGI_STATIC_UNIFORMS
+#endif
 
 // Enable support for cylindrical screens.
 #define LTCGI_CYLINDER

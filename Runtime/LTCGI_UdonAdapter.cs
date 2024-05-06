@@ -45,6 +45,8 @@ public class LTCGI_RuntimeAdapter : MonoBehaviour
     private Vector4[] _LTCGI_Vertices_0t, _LTCGI_Vertices_1t, _LTCGI_Vertices_2t, _LTCGI_Vertices_3t;
     public Vector4[] _LTCGI_ExtraData;
     public Texture2D _LTCGI_static_uniforms;
+    public Vector4[] _LTCGI_UVStart;
+    public Vector4[] _LTCGI_UVEnd;
     public Transform[] _LTCGI_ScreenTransforms;
     public int _LTCGI_ScreenCount;
     public int _LTCGI_ScreenCountMaskedAvatars;
@@ -135,6 +137,11 @@ public class LTCGI_RuntimeAdapter : MonoBehaviour
         #endif
 
         _SetGlobalState(true);
+
+        if (_LTCGI_UVStart != null)
+            GlobalShader.SetGlobalVectorArray(GlobalShader.PropertyToID("_Udon_LTCGI_UVStart"), _LTCGI_UVStart);   
+        if (_LTCGI_UVEnd != null)
+            GlobalShader.SetGlobalVectorArray(GlobalShader.PropertyToID("_Udon_LTCGI_UVEnd"), _LTCGI_UVEnd);
 
         if (_LTCGI_static_uniforms != null)
             GlobalShader.SetGlobalTexture(GlobalShader.PropertyToID("_Udon_LTCGI_static_uniforms"), _LTCGI_static_uniforms);

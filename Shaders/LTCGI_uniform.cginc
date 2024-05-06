@@ -14,11 +14,11 @@ uniform Texture2D<float4> _Udon_LTCGI_lut2;
 uniform Texture2D<float4> _Udon_LTCGI_lut1;
 #endif
 
+#ifdef LTCGI_STATIC_UNIFORMS
+
 #ifndef SHADER_TARGET_SURFACE_ANALYSIS_MOJOSHADER
 uniform Texture2D<float4> _Udon_LTCGI_static_uniforms;
 #endif
-
-#ifdef LTCGI_STATIC_UNIFORMS
 
 float4 _Udon_LTCGI_Vertices_0_get(uint i) {
     return _Udon_LTCGI_static_uniforms[uint2(0, i)];
@@ -32,6 +32,12 @@ float4 _Udon_LTCGI_Vertices_2_get(uint i) {
 float4 _Udon_LTCGI_Vertices_3_get(uint i) {
     return _Udon_LTCGI_static_uniforms[uint2(3, i)];
 }
+float4 _Udon_LTCGI_UVStart_get(uint i) {
+    return _Udon_LTCGI_static_uniforms[uint2(4, i)];
+}
+float4 _Udon_LTCGI_UVEnd_get(uint i) {
+    return _Udon_LTCGI_static_uniforms[uint2(5, i)];
+}
 
 #else
 
@@ -40,6 +46,8 @@ uniform float4 _Udon_LTCGI_Vertices_0[MAX_SOURCES];
 uniform float4 _Udon_LTCGI_Vertices_1[MAX_SOURCES];
 uniform float4 _Udon_LTCGI_Vertices_2[MAX_SOURCES];
 uniform float4 _Udon_LTCGI_Vertices_3[MAX_SOURCES];
+uniform float4 _Udon_LTCGI_UVStart[MAX_SOURCES];
+uniform float4 _Udon_LTCGI_UVEnd[MAX_SOURCES];
 
 float4 _Udon_LTCGI_Vertices_0_get(uint i) {
     return _Udon_LTCGI_Vertices_0[i];
@@ -52,6 +60,12 @@ float4 _Udon_LTCGI_Vertices_2_get(uint i) {
 }
 float4 _Udon_LTCGI_Vertices_3_get(uint i) {
     return _Udon_LTCGI_Vertices_3[i];
+}
+float4 _Udon_LTCGI_UVStart_get(uint i) {
+    return _Udon_LTCGI_UVStart[i];
+}
+float4 _Udon_LTCGI_UVEnd_get(uint i) {
+    return _Udon_LTCGI_UVEnd[i];
 }
 
 #endif

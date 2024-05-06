@@ -442,6 +442,21 @@ namespace pi.LTCGI
             var staticUniformTex = WriteStaticUniform(screens, fast);
             var screenCountDynamic = screens.TakeWhile(x => x.Dynamic).Count();
 
+            // array of MAX_SOURCE * Vector4
+            var uvStart = new Vector4[MAX_SOURCES];
+            var uvEnd = new Vector4[MAX_SOURCES];
+
+            // fill out the arrays for UVs
+            for (int i=0; i<MAX_SOURCES; i++) {
+                if (_LTCGI_UVs[i] != null && _LTCGI_UVs[i].Length == 4) {
+                    uvStart[i] = new Vector4(_LTCGI_UVs[i][0].x, _LTCGI_UVs[i][0].y, _LTCGI_UVs[i][1].x, _LTCGI_UVs[i][1].y);
+                    uvEnd[i] = new Vector4(_LTCGI_UVs[i][2].x, _LTCGI_UVs[i][2].y, _LTCGI_UVs[i][3].x, _LTCGI_UVs[i][3].y);
+                } else {
+                    uvStart[i] = Vector4.zero;
+                    uvEnd[i] = Vector4.zero;
+                }
+            }
+
             for (int i = 0; i < cachedMeshRenderers.Length; i++)
             {
                 var r = cachedMeshRenderers[i];
@@ -552,6 +567,8 @@ namespace pi.LTCGI
                 adapter._LTCGI_Vertices_3 = _LTCGI_Vertices_3;
                 adapter._LTCGI_ExtraData = _LTCGI_ExtraData;
                 adapter._LTCGI_static_uniforms = staticUniformTex;
+                adapter._LTCGI_UVStart = uvStart;
+                adapter._LTCGI_UVEnd = uvEnd;
                 adapter._LTCGI_ScreenCount = screens.Length;
                 adapter._LTCGI_ScreenCountDynamic = screenCountDynamic;
                 // masked counts must include all masked screens up to the last non-masked one!

@@ -439,8 +439,8 @@ void LTCGI_GetLw(uint i, ltcgi_flags flags, float3 worldPos, out float3 Lw[4], o
         Lw[2] = v2.xyz - worldPos;
         Lw[3] = v3.xyz - worldPos;
         #ifndef SHADER_TARGET_SURFACE_ANALYSIS
-            uvStart = _Udon_LTCGI_static_uniforms[uint2(4, i)];
-            uvEnd = _Udon_LTCGI_static_uniforms[uint2(5, i)];
+            uvStart = _Udon_LTCGI_UVStart_get(i);
+            uvEnd = _Udon_LTCGI_UVEnd_get(i);
         #else
             uvStart = float4(0, 0, 1, 0);
             uvEnd = float4(1, 1, 0, 1);
