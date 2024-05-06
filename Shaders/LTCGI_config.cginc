@@ -52,7 +52,7 @@
 #define LTCGI_NO_AUDIOLINK
 
 /// Allow statically textured lights.
-#define LTCGI_STATIC_TEXTURES
+//#define LTCGI_STATIC_TEXTURES
 
 // disabled editor from here on out
 ///
