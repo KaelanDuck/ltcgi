@@ -4,7 +4,6 @@
     {
         _MainTex ("Input Texture", 2D) = "white" {}
         [ToggleUI] _Gamma ("Apply Gamma", Float) = 0
-        [ToggleUI] _FlipUV ("Flip Y UV", Float) = 0
         
 		_AspectRatio ("Aspect Ratio", Float) = 1.777777
 
@@ -27,7 +26,7 @@
             sampler2D _MainTex;
     		float4 _MainTex_TexelSize;
 
-            float _Gamma, _FlipUV;
+            float _Gamma;
             float _AspectRatio;
 
             sampler2D _OverlayTexture;
@@ -65,13 +64,6 @@
             {
                 float2 mainTexUv = i.globalTexcoord.xy;
                 float2 overlayTexUv = i.globalTexcoord.xy;
-                #ifdef UNITY_UV_STARTS_AT_TOP
-                _FlipUV = !_FlipUV;
-                #endif
-                if (_FlipUV) {
-                    mainTexUv.y = 1 - mainTexUv.y;
-                    overlayTexUv.y = 1 - overlayTexUv.y;
-                }
 
                 float visibility = 1;
                 correctUV(mainTexUv, visibility, _MainTex_TexelSize.zw);
